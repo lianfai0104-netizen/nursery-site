@@ -3,61 +3,443 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bellevue Nursery | Quality Plants & Garden Supplies</title>
+  <title>Bellevue Nursery | Pacific Northwest Gardening & Plants</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --primary: #1b4332;
+      --primary-hover: #2d6a4f;
+      --accent: #bc6c25;
+      --accent-hover: #9a5316;
+      --bg: #fbfbfa;
+      --card-bg: #ffffff;
+      --text: #212529;
+      --text-muted: #555e66;
+      --border: #e8ece9;
+    }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: system-ui, sans-serif; background: #f9fbf9; color: #2d3748; line-height: 1.6; }
-    header { background: #fff; border-bottom: 1px solid #e2e8f0; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
-    .brand { font-size: 1.4rem; font-weight: 700; color: #235c36; text-decoration: none; }
-    .hero { background: #235c36; color: white; text-align: center; padding: 4rem 1.5rem; }
-    .hero h1 { font-size: 2.5rem; margin-bottom: 1rem; }
-    .hero p { font-size: 1.2rem; opacity: 0.9; }
-    .container { max-width: 1000px; margin: 0 auto; padding: 3rem 1.5rem; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin-bottom: 3rem; }
-    .card { background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 1.5rem; }
-    .card h3 { color: #235c36; margin-bottom: 0.5rem; }
-    .info { background: #edf7ed; border: 1px solid #c6e6c6; border-radius: 8px; padding: 1.5rem; }
-    .info h3 { color: #235c36; margin-bottom: 0.5rem; }
-    footer { text-align: center; padding: 2rem; font-size: 0.9rem; color: #718096; }
+    body {
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Top Announcement Bar */
+    .top-bar {
+      background: #0f281e;
+      color: #d8f3dc;
+      text-align: center;
+      padding: 0.55rem 1rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+    }
+
+    /* Main Navigation */
+    header {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      text-decoration: none;
+      color: var(--primary);
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--accent); }
+
+    .btn-nav {
+      background: var(--primary);
+      color: white !important;
+      padding: 0.6rem 1.25rem;
+      border-radius: 50px;
+      font-weight: 600 !important;
+      transition: background 0.2s !important;
+    }
+
+    .btn-nav:hover { background: var(--primary-hover) !important; }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      background: linear-gradient(rgba(15, 40, 30, 0.65), rgba(15, 40, 30, 0.75)),
+                  url('https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?auto=format&fit=crop&w=1800&q=80') center/cover no-repeat;
+      color: white;
+      text-align: center;
+      padding: 6.5rem 1.5rem 7.5rem;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      padding: 0.35rem 1rem;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(2.3rem, 5vw, 3.8rem);
+      font-weight: 700;
+      max-width: 820px;
+      margin: 0 auto 1.25rem;
+      line-height: 1.2;
+    }
+
+    .hero p {
+      font-size: clamp(1.05rem, 2vw, 1.25rem);
+      max-width: 620px;
+      margin: 0 auto 2.25rem;
+      color: #e6ece8;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+      padding: 0.85rem 2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+    .btn-primary:hover { background: var(--accent-hover); transform: translateY(-1px); }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      color: white;
+      padding: 0.85rem 2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+    .btn-secondary:hover { background: rgba(255, 255, 255, 0.25); }
+
+    /* Section Styles */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 5rem 1.5rem;
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto 3.5rem;
+    }
+
+    .section-tag {
+      color: var(--accent);
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 2.3rem;
+      color: var(--primary);
+      margin-bottom: 0.8rem;
+    }
+
+    .section-desc {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+    }
+
+    /* Category Cards */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+
+    .plant-card {
+      background: var(--card-bg);
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+      transition: transform 0.25s, box-shadow 0.25s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .plant-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+    }
+
+    .card-img-wrap {
+      height: 220px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .card-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.35s ease;
+    }
+
+    .plant-card:hover .card-img {
+      transform: scale(1.05);
+    }
+
+    .card-body {
+      padding: 1.75rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-body h3 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.35rem;
+      color: var(--primary);
+      margin-bottom: 0.6rem;
+    }
+
+    .card-body p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 1.25rem;
+      flex-grow: 1;
+    }
+
+    .card-link {
+      font-weight: 600;
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 0.9rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    /* Store Info Section */
+    .info-section {
+      background: #edf3ee;
+      border-radius: 16px;
+      padding: 3.5rem 2.5rem;
+      margin-top: 3rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2.5rem;
+      border: 1px solid #dce6de;
+    }
+
+    .info-card h4 {
+      font-family: 'Playfair Display', Georgia, serif;
+      color: var(--primary);
+      font-size: 1.3rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .info-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    .status-badge {
+      display: inline-block;
+      background: #2d6a4f;
+      color: white;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+    }
+
+    /* Footer */
+    footer {
+      background: #112019;
+      color: #9eb1a6;
+      padding: 3rem 1.5rem;
+      text-align: center;
+      font-size: 0.9rem;
+      margin-top: 4rem;
+    }
+
+    footer p { margin-bottom: 0.5rem; }
+    footer a { color: #d8f3dc; text-decoration: none; }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hero { padding: 4.5rem 1.5rem; }
+      .info-section { padding: 2rem 1.5rem; }
+    }
   </style>
 </head>
 <body>
+
+  <!-- Top Ribbon -->
+  <div class="top-bar">
+    🌿 Spring planting season is here! Fresh arrivals of NW perennials and ornamental trees weekly.
+  </div>
+
+  <!-- Navigation -->
   <header>
-    <a href="#" class="brand">🌿 Bellevue Nursery</a>
-    <span>Staging Environment</span>
+    <div class="nav-inner">
+      <a href="#" class="brand">
+        <span>🌿</span> Bellevue Nursery
+      </a>
+      <ul class="nav-links">
+        <li><a href="#plants">Plants & Nursery</a></li>
+        <li><a href="#services">Garden Care</a></li>
+        <li><a href="#visit">Visit Us</a></li>
+        <li><a href="tel:4255550199" class="btn-nav">Call Nursery</a></li>
+      </ul>
+    </div>
   </header>
 
+  <!-- Hero Banner -->
   <section class="hero">
-    <h1>Growing Beauty for Your Garden</h1>
-    <p>Discover premier Northwest plants, trees, and gardening supplies.</p>
+    <span class="hero-badge">Est. Bellevue, Washington</span>
+    <h1>Cultivating the Northwest Garden</h1>
+    <p>Hand-selected native varieties, indoor greenery, organic soils, and expert seasonal guidance for local gardeners.</p>
+    <div class="hero-btns">
+      <a href="#visit" class="btn-primary">Hours & Directions</a>
+      <a href="#plants" class="btn-secondary">Explore Our Collection</a>
+    </div>
   </section>
 
+  <!-- Offerings Grid -->
   <main class="container">
-    <div class="grid">
-      <div class="card">
-        <h3>Perennials & Shrubs</h3>
-        <p>Hardy, drought-tolerant, and pollinator-friendly varieties tailored for local gardens.</p>
-      </div>
-      <div class="card">
-        <h3>Indoor Houseplants</h3>
-        <p>A broad selection of tropicals, foliage, succulents, and low-light favorites.</p>
-      </div>
-      <div class="card">
-        <h3>Soils & Amendments</h3>
-        <p>Nutrient-rich potting mixes, composts, and organic fertilizers.</p>
-      </div>
+    <div class="section-header">
+      <span class="section-tag">Quality Plant Inventory</span>
+      <h2 id="plants" class="section-title">Rooted in Excellence</h2>
+      <p class="section-desc">Every plant in our nursery is acclimated and cared for specifically to thrive in Puget Sound climates.</p>
     </div>
 
-    <div class="info">
-      <h3>Store Hours & Location</h3>
-      <p><strong>Hours:</strong> Mon – Sat: 9:00 AM – 5:00 PM | Sun: 10:00 AM – 4:00 PM</p>
-      <p><strong>Location:</strong> Bellevue Nursery, Bellevue, WA</p>
-      <p><strong>Contact:</strong> (425) 555-0199 | info@bellevuenursery.com</p>
+    <div class="card-grid">
+      <!-- Card 1 -->
+      <article class="plant-card">
+        <div class="card-img-wrap">
+          <img class="card-img" src="https://images.unsplash.com/photo-1599685315640-9ceab2f58944?auto=format&fit=crop&w=700&q=80" alt="Flowering perennials and garden shrubs">
+        </div>
+        <div class="card-body">
+          <h3>Perennials & Shrubs</h3>
+          <p>Drought-resistant, pollinator-attracting blooms, evergreens, and flowering hydrangeas curated for Northwest beds.</p>
+          <a href="#visit" class="card-link">View In-Store Selection &rarr;</a>
+        </div>
+      </article>
+
+      <!-- Card 2 -->
+      <article class="plant-card">
+        <div class="card-img-wrap">
+          <img class="card-img" src="https://images.unsplash.com/photo-1463936575829-25148e1db1b8?auto=format&fit=crop&w=700&q=80" alt="Indoor tropical houseplants and succulents">
+        </div>
+        <div class="card-body">
+          <h3>Houseplants & Tropicals</h3>
+          <p>Brighten your home with rare Monsteras, low-light snake plants, trailing pothos, and decorative indoor ceramic pots.</p>
+          <a href="#visit" class="card-link">Explore Foliage &rarr;</a>
+        </div>
+      </article>
+
+      <!-- Card 3 -->
+      <article class="plant-card">
+        <div class="card-img-wrap">
+          <img class="card-img" src="https://images.unsplash.com/photo-1589923188900-85dae523342b?auto=format&fit=crop&w=700&q=80" alt="Garden soils, amendments, and organic fertilizers">
+        </div>
+        <div class="card-body">
+          <h3>Soils & Amendments</h3>
+          <p>Premium compost, cedar mulch, worm castings, and organic fertilizers engineered to nourish your local soil.</p>
+          <a href="#visit" class="card-link">Learn About Soil Blends &rarr;</a>
+        </div>
+      </article>
     </div>
+
+    <!-- Store Info Box -->
+    <section class="info-section" id="visit">
+      <div class="info-card">
+        <span class="status-badge">Open Today</span>
+        <h4>Nursery Hours</h4>
+        <p><strong>Monday – Saturday:</strong> 9:00 AM – 5:00 PM</p>
+        <p><strong>Sunday:</strong> 10:00 AM – 4:00 PM</p>
+        <p style="margin-top: 0.5rem; font-size: 0.85rem; color: #76837a;">*Holiday hours may vary. Dogs on leash welcome!</p>
+      </div>
+
+      <div class="info-card">
+        <h4>Visit Our Bellevue Location</h4>
+        <p><strong>Bellevue Nursery</strong><br>Bellevue, Washington</p>
+        <p style="margin-top: 0.75rem;">
+          <a href="https://maps.google.com" target="_blank" style="color: var(--accent); font-weight: 600; text-decoration: none;">Get Driving Directions &rarr;</a>
+        </p>
+      </div>
+
+      <div class="info-card">
+        <h4>Plant Inquiries & Advice</h4>
+        <p>Have questions about inventory, tree sizing, or plant health?</p>
+        <p style="margin-top: 0.5rem;"><strong>Phone:</strong> (425) 555-0199<br><strong>Email:</strong> info@bellevuenursery.com</p>
+      </div>
+    </section>
   </main>
 
+  <!-- Footer -->
   <footer>
-    <p>&copy; 2026 Bellevue Nursery. Staging test site.</p>
+    <p>&copy; 2026 Bellevue Nursery. All rights reserved.</p>
+    <p style="font-size: 0.8rem; opacity: 0.7;">Bellevue Staging Environment</p>
   </footer>
+
 </body>
 </html>
